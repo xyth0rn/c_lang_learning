@@ -7,7 +7,7 @@ Thus, the original value won't be affected.
 HOWEVER, when transfering arrays between functions, it calls by "reference" aka memory location, not value
 Therefore, when you WILL change the original value within the original array.
 
-To call multidimensional arrays, only the first dimension doesn't require decleration:
+To call multidimensional arrays, only the first dimension doesn't require decleration (but you'll need to input the first dimension size):
 
   void call_3D_array(int array[][3][3], int size){
   ...
