@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<math.h>  // when compiling: gcc my_code.c -lm
-
+#include<stdlib.h>
 // upon seeing "ADD" it reads as "0"
 #define ADD 0
 
@@ -55,6 +55,14 @@ int main() {
   // if a > 0, c = a; else c = -a;
   int c = (a > 0)?  a: -a;
 
+  // math.h functions
+  double power = pow(3.4 , 2.0);
+  double square_root = sqrt(9);
+  double get_ceiling = ceil(8.5);  // smallest integer >= x
+  double get_floor = floor(8.5);   // largest integer <= x
+
+  // stdlib.h functions
+  
   
   // switch-case
   switch (flag){
