@@ -1,4 +1,5 @@
 /*
+---NOTE ABOUT ARRAYS---
 When transfering int / float / bool / double between functions, it calls by "value".
 This maens a copy of the original value is created at a different memory location
 for manipulation within the function.
@@ -22,11 +23,12 @@ To call multidimensional arrays, only the first dimension doesn't require decler
 // upon seeing "ADD" it reads as "0"
 #define ADD 0
 
-// bubble sort
+
 /*
 Because arrays are called by reference (aka memory location), you need to input the size of the array.
 Note that it WILL CHANGE the value of the original array.
 */
+// bubble sort
 void bubbleSort(int array[], int size) {
   for (int step = 0; step < size - 1; ++step) {
     for (int i = 0; i < size - step - 1; ++i) {
