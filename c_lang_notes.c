@@ -1,6 +1,8 @@
 // Basic operators and grammar
 #include<stdio.h>
 #include<stdbool.h>
+#include<math.h>  // when compiling: gcc my_code.c -lm
+
 // upon seeing "ADD" it reads as "0"
 #define ADD 0
 
