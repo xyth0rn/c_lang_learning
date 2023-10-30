@@ -1,3 +1,19 @@
+/*
+When transfering int / float / bool / double between functions, it calls by "value".
+This maens a copy of the original value is created at a different memory location
+for manipulation within the function.
+Thus, the original value won't be affected.
+
+HOWEVER, when transfering arrays between functions, it calls by "reference" aka memory location, not value
+Therefore, when you WILL change the original value within the original array.
+
+To call multidimensional arrays, only the first dimension doesn't require decleration:
+
+  void call_3D_array(int array[][3][3], int size){
+  ...
+  }
+*/
+
 // Basic operators and grammar
 #include<stdio.h>
 #include<stdbool.h>
@@ -7,6 +23,10 @@
 #define ADD 0
 
 // bubble sort
+/*
+Because arrays are called by reference (aka memory location), you need to input the size of the array.
+Note that it WILL CHANGE the value of the original array.
+*/
 void bubbleSort(int array[], int size) {
   for (int step = 0; step < size - 1; ++step) {
     for (int i = 0; i < size - step - 1; ++i) {
