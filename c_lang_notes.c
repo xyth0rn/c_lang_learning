@@ -1,5 +1,17 @@
+// Basic operators and grammar
+#include<stdio.h>
+#include<stdbool.h>
+#include<math.h>  // when compiling: gcc my_code.c -lm
+#include<stdlib.h>
+// upon seeing "ADD" it reads as "0"
+#define ADD 0
+
 /*
 ---NOTE ABOUT ARRAYS---
+Arrays are saved and read by using the location of a[0] and then literally counting bits of memories to access a[i].
+If the value is an int, the size of each object in the array is 4 bits.
+-> this is why you need to define the dimensions of an array when initializing
+
 When transfering int / float / bool / double between functions, it calls by "value".
 This maens a copy of the original value is created at a different memory location
 for manipulation within the function.
@@ -11,24 +23,12 @@ Therefore, when you WILL change the original value within the original array.
 To call multidimensional arrays, only the first dimension doesn't require decleration (but you'll need to input the first dimension size):
 
   void call_3D_array(int array[][3][3], int size){
-  ...
+    ...
   }
 */
 
-// Basic operators and grammar
-#include<stdio.h>
-#include<stdbool.h>
-#include<math.h>  // when compiling: gcc my_code.c -lm
-#include<stdlib.h>
-// upon seeing "ADD" it reads as "0"
-#define ADD 0
 
-
-/*
-Because arrays are called by reference (aka memory location), you need to input the size of the array.
-Note that it WILL CHANGE the value of the original array.
-*/
-// bubble sort
+// bubble sort ---
 void bubbleSort(int array[], int size) {
   for (int step = 0; step < size - 1; ++step) {
     for (int i = 0; i < size - step - 1; ++i) {
@@ -37,8 +37,13 @@ void bubbleSort(int array[], int size) {
         array[i] = array[i + 1];
         array[i + 1] = temp;
 }}}}
+/*
+Because arrays are called by reference (aka memory location), you need to input the size of the array.
+Note that it WILL CHANGE the value of the original array.
+*/
 
-// gcd
+
+// gcd ---
 int gcd(int i, int j){
   int k;
   scanf("%d%d", &i, &j);
@@ -63,9 +68,21 @@ int main() {
   printf("%f", flt);
   printf("%lf", dbl);
   printf("%6.4f", flt);  // total 6 digits, 4 decimal digits => output 12.3456
+  printf("%.3f", flt);  // prints 3 decimal digits => output 1.234
   
   int flt_to_int;
   flt_to_int = (int) flt;  // (int), (float), (double), etc can be used to change variable type
+
+  // initializing 1D array (fills with 0)
+  int array_1D[3] = {0};
+
+  // initializing multi-D array
+  int array_3D[2][3][4];
+  for(int i=0; i<2; i++){
+    for(int j=0; j<3; j++){
+      for(int k=0; k<4; k++){
+        array_3D[i][j][k] = 0;
+  }}}
   
   
   // check if still have input
@@ -77,16 +94,16 @@ int main() {
   // if a > 0, c = a; else c = -a;
   int c = (a > 0)?  a: -a;
 
-  // math.h functions
+  // math.h functions ---
   double power = pow(3.4 , 2.0);
   double square_root = sqrt(9);
   double get_ceiling = ceil(8.5);  // smallest integer >= x
   double get_floor = floor(8.5);   // largest integer <= x
 
-  // stdlib.h functions
+  // stdlib.h functions ---
   
   
-  // switch-case
+  // switch-case ---
   switch (flag){
   case 1:
     statements;
