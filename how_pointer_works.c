@@ -1,3 +1,15 @@
+/*
+when defining a pointer variable:
+    (type) *(name);
+-> the * symbol is to show that this is a pointer; the type shows the type of value at the reference of pointed by the pointer.
+
+when calling a variable:
+    * is to get value
+    & is to get reference (address)
+*/
+
+// Arrays are created and accessed by using pointers.
+
 #include <stdio.h>
 int main(void){ 
     int i;
