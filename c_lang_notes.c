@@ -1,9 +1,33 @@
+--- vim commands ---
 // paste things to vim
 :set paste
 // finish using ctrl+shift+v
 :set no paste
+// set tab to 2
+:set ts=2 sw=2
+// show number of lines
+:set nu
+// yank n lines
+`type number` -> yy
+// paste
+p
+// delete line
+d
+// replace character
+r -> (new character)
+// repeat last action
+.
 
-// Basic operators and grammar
+
+--- terminal commands ---
+// EOF
+ctrl + D  (or "ctrl + Z" in windows terminal)
+// remove file
+rm `file`
+// create copy of file
+cp `og_file` `new_file`
+  
+--- C Lang Basic operators and grammar ---
 // if use <math.h>, when compiling: gcc my_code.c -lm
 #include<stdio.h>
 #include<stdbool.h>
