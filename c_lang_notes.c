@@ -4,9 +4,10 @@
 :set no paste
 
 // Basic operators and grammar
+// if use <math.h>, when compiling: gcc my_code.c -lm
 #include<stdio.h>
 #include<stdbool.h>
-#include<math.h>  // when compiling: gcc my_code.c -lm
+#include<math.h>
 #include<stdlib.h>
 #include<ctype.h>
 #include<string.h>
