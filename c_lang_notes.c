@@ -1,33 +1,3 @@
---- vim commands ---
-// paste things to vim
-:set paste
-// finish using ctrl+shift+v
-:set no paste
-// set tab to 2
-:set ts=2 sw=2
-// show number of lines
-:set nu
-// yank n lines
-`type number` -> yy
-// paste
-p
-// delete line
-d
-// replace character
-r -> (new character)
-// repeat last action
-.
-
-
---- terminal commands ---
-// EOF
-ctrl + D  (or "ctrl + Z" in windows terminal)
-// remove file
-rm `file`
-// create copy of file
-cp `og_file` `new_file`
-  
---- C Lang Basic operators and grammar ---
 // if use <math.h>, when compiling: gcc my_code.c -lm
 #include<stdio.h>
 #include<stdbool.h>
@@ -126,14 +96,14 @@ int main() {
   // if a > 0, c = a; else c = -a;
   int c = (a > 0)?  a: -a;
 
+  
   // math.h functions ---
   double power = pow(3.4 , 2.0);
   double square_root = sqrt(9);
   double get_ceiling = ceil(8.5);  // smallest integer >= x
   double get_floor = floor(8.5);   // largest integer <= x
 
-  // stdlib.h functions ---
-
+  
   // switch-case ---
   switch (flag){
   case 1:
@@ -147,7 +117,7 @@ int main() {
   default:
     default_statement;
   }
-  // end of switch-case ---
+  
 
   // char (1 byte)
   char c = 'a';  // using ASCII
@@ -211,13 +181,12 @@ int main() {
   char *strcpy(char *s1, char *s2);  // copy s1 to s2
   char *strncpy(char *s1, const char *s2, size_t n);  // copy at most n characters from s1 to s2
   char *strcat(char *s1, char *s2);  // copy s1 and append to the end of s2
+  // need to be cautious this may trigger "buffer overrun"
   char *strncat(char *s1, const char *s2, size_t);  // copy at most n characters from s1 to s2
   int strcmp(const char *s1, const char *s2);  // compare if s1 and s2 is the same
   int strncmp(const char *s1, const char *s2, size_t n);  // compare if the first n characters of s1 and s2 is the same
   char *strchr(const char *s, int c);  // return the pointer to the first time c appeared in s
   char *strtok(char *s1, const char *s2);  // cut s1 using s2
-  // need to be cautious this may trigger "buffer overrun"
-
   strcmp(str_a, str_b);
   /*
   if a > b  -> return positive num
@@ -225,11 +194,69 @@ int main() {
   if a == b -> return 0
   */
 
+  // example of using strtok
+  char str[] = "Hello world, nice to meet you";
+  char str2[64];
+  strcpy(str2, str);
+
+  const char* d = "  ,";
+  char *p;
+  p = strtok(str, d);
+    
+  while (p != NULL) {
+    printf("%s\n", p);
+    p = strtok(NULL, d);		   
+  }
+
+  printf("---\n");
+  printf("%s\n", str);
+  printf("%s\n", str2);
+
+  /* result:
+  Hello
+  world
+  nice
+  to
+  meet
+  you
+  ---
+  Hello
+  Hello world, nice to meet you
+  */
+
   
   return 0;
 }
 
 
+--- vim commands ---
+// paste things to vim
+:set paste
+// finish using ctrl+shift+v
+:set no paste
+// set tab to 2
+:set ts=2 sw=2
+// show number of lines
+:set nu
+// yank n lines
+`type number` -> yy
+// paste
+p
+// delete line
+d
+// replace character
+r -> (new character)
+// repeat last action
+.
+
+
+--- terminal commands ---
+// EOF
+ctrl + D  (or "ctrl + Z" in windows terminal)
+// remove file
+rm `file`
+// create copy of file
+cp `og_file` `new_file`
 
 
 
