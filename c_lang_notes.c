@@ -83,6 +83,20 @@ int findSubstr(char *inpText, char *pattern) {
   }
 }
 
+// split string (better version of strtok)
+void customSplit(char *input, const char *delimiter) {
+    int len = strlen(delimiter);
+    char *ptr = input;
+    while (*ptr != '\0') {
+        if (strncmp(ptr, delimiter, len) == 0) {
+            ptr += len;
+            printf(" ");
+        } else {
+            printf("%c", *ptr);
+            ptr++;
+        }
+    }
+}
 
 int main() {
   int a=1, b=0;
