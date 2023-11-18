@@ -57,6 +57,33 @@ int gcd(int i, int j){
   return j;
 }
 
+// find substring in string
+int findSubstr(char *inpText, char *pattern) {
+  int inplen = strlen(inpText);
+  while (inpText != NULL) {
+      char *remTxt = inpText;
+      char *remPat = pattern;
+
+      if (strlen(remTxt) < strlen(remPat)) {
+          /* printf ("length issue remTxt %s \nremPath %s \n", remTxt, remPat); */
+          return -1;
+      }
+
+      while (*remTxt++ == *remPat++) {
+          printf("remTxt %s \nremPath %s \n", remTxt, remPat);
+          if (*remPat == '\0') {
+              printf ("match found \n");
+              return inplen - strlen(inpText+1);
+          }
+          if (remTxt == NULL) {
+              return -1;
+          }
+      }
+      remPat = pattern;
+      inpText++;
+  }
+}
+
 
 int main() {
   int a=1, b=0;
