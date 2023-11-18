@@ -142,7 +142,7 @@ int main() {
   double square_root = sqrt(9);
   double get_ceiling = ceil(8.5);  // smallest integer >= x
   double get_floor = floor(8.5);   // largest integer <= x
-
+  int atoi(string);  // converts string to integer 
   
   // switch-case ---
   switch (flag){
