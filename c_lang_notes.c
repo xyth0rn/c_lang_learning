@@ -5,8 +5,28 @@
 #include<stdlib.h>
 #include<ctype.h>
 #include<string.h>
+#include<limits.h>
 // upon seeing "ADD" it reads as "0"
 #define ADD 0
+
+/* limits.h
+CHAR_BIT	8	定義了一個字節中的比特數。
+SCHAR_MIN	-127	定義最小值簽署的字符。
+SCHAR_MAX	127	定義最大值簽署的字符。
+UCHAR_MAX	255	定義unsigned char類型的最大值。
+CHAR_MIN	0	char類型定義最小值，它的值將等於SCHAR_MIN如果char表示負值，否則為零。
+CHAR_MAX	127	定義char類型的值，它的值將等於SCHAR_MAX的char代表負值，否則UCHAR_MAX，
+MB_LEN_MAX	1	定義的最大字節數多字節字符。
+SHRT_MIN	-32767	定義一個短整型的最小值。
+SHRT_MAX	+32767	定義一個短整型的最大值。
+USHRT_MAX	65535	定義一個無符號的短整型的最大值。
+INT_MIN	-32767	定義類型為int的最小值。
+INT_MAX	+32767	定義一個int的最大值。
+UINT_MAX	65535	定義一個unsigned int的最大值。
+LONG_MIN	-2147483647	定義一個長整型的最小值。
+LONG_MAX	+2147483647	定義一個長整型的最大值。
+ULONG_MAX	4294967295	定義一個無符號長整型的最大值
+*/
 
 /*
 ---NOTE ABOUT ARRAYS---
