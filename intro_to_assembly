@@ -1,0 +1,98 @@
+// 暫存器 x_d中的數值 = 暫存器x_src1中的數值 + 暫存器中x_src2中的數值
+add x_d, x_src1, x_src2
+
+// 暫存器 x_d中的數值 = 暫存器x_src1中的數值 - 暫存器中x_src2中的數值
+sub x_d, x_src1, x_src2
+
+// 暫存器 x_d中的數值 = 暫存器x_src1中的數值 + constant
+addi x_d, x_src1, constant
+
+沒有 subi 指令
+
+程式所需要用到的變數不再暫存器中時:
+  lw x_d, offset(x_src1)
+  // lw 代表的是 load word (32bits)。
+  // CPU會去記憶體位址 x_src1 + offset 的地方讀取32bits的資料，並將資料放進x_d中。
+  // 在執行這行指令的時候，x_src1中的數值被視為記憶體位址!!!
+  sw x_src1, offset(x_d1)
+  // sw 代表的是 store word (32bits)。
+  // CPU會將x_src1中的資料放到記憶體位置x_d1 + offset的地方。
+  // 在執行這行指令的時候，x_d1中的數值被視為記憶體位址!!!
+
+branch指令
+  處理程式中的for 迴圈、if…else…
+  beq x_src1, x_src2, offset
+  // beq 代表的是 branch if equal，如果暫存器x_src1中的數值跟x_src2中的數值相等
+  // program counter = program counter + offset.
+  bne x_src1, x_src2, offset
+  // bne 代表的是 branch if not equal
+  bge x_src1, x_src2, offset
+  // bge 代表的是 branch if greater than or equal to
+
+組合語言  --組譯器-->  機器語言
+  將每一個指令轉換成32bits的格式 (RISC-V)
+  CPU需要從32個0和1中知道什麼樣的資訊?
+    這個指令屬於哪個基本指令? (加減法、記憶體暫存器之間的傳輸、branch)
+      * Opcode (7 bits)
+    需要做什麼樣的運算? (具體是加法還是減法)
+      * Function code (10 bits)
+    涉及到的暫存器? (拿哪個暫存器中的資料來運算)
+      * rs1、rs2、rd (15 bits)
+
+---example---
+c_lang:
+int x = 10;
+int y = 20;
+int c = 0;
+if ( y < x){
+c = x – y;
+}
+else{
+c = y – x;
+}
+
+assembly:
+addi x0, x0, 10
+addi x1, x1, 20
+addi x2, x2, 0
+bge x1, x0, 3
+sub x2, x0, x1
+beq x0, x0, 2
+sub x2, x1, x0
+end:
+
+machine language:
+0100101…0101
+1010100…1010
+0010100…1010
+1010010…0001
+0100000…1010
+1010100…1010
+0101000…0100
+---
+
+ex.
+Main Memory:
+Index Instruction
+0 addi x0, x0, 10
+1 addi x1, x1, 20
+2 addi x2, x2, 0
+3 bge x1, x0, 3
+4 sub x2, x0, x1
+5 beq x0, x0, 2
+6 sub x2, x1, x0
+7 end
+
+
+x0    x1    x2  Program Cnt
+0     0     0      0
+--run addi x0, x0, 10、更新 Program counter--
+10    0     0      1
+--執行 addi x1, x1, 20、更新 Program counter--
+10   20     0      2
+--執行 addi x2, x2, 0、更新 Program counter--
+10   20     0      3
+--執行 bge x1, x0, 3、更新 Program counter--
+10   20     0      6
+--執行 sub x2, x1, x0、更新 Program counter--
+10   20    10      7
