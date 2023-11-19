@@ -245,14 +245,15 @@ int main() {
 
   // string.h functions
   strlen();  // find length of string (excluding ending '\0')
-  char *strcpy(char *s1, char *s2);  // copy s1 to s2
-  char *strncpy(char *s1, const char *s2, size_t n);  // copy at most n characters from s1 to s2
-  char *strcat(char *s1, char *s2);  // copy s1 and append to the end of s2
+  char *strcpy(char *dest, char *src);  // copy to
+  char *strncpy(char *dest, const char *src, size_t n);  // copy at most n characters to
+  char *strcat(char *dest, char *src);  // copy and append to the end
   // need to be cautious this may trigger "buffer overrun"
-  char *strncat(char *s1, const char *s2, size_t);  // copy at most n characters from s1 to s2
+  char *strncat(char *dest, const char *src, size_t);  // copy at most n characters to
   int strcmp(const char *s1, const char *s2);  // compare if s1 and s2 is the same
   int strncmp(const char *s1, const char *s2, size_t n);  // compare if the first n characters of s1 and s2 is the same
   char *strchr(const char *s, int c);  // return the pointer to the first time c appeared in s
+  char * strstr(char *s1, char *s2);  // return the pointer to the first time s2 appeared in s1
   char *strtok(char *s1, const char *s2);  // cut s1 using s2
   strcmp(str_a, str_b);
   /*
