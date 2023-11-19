@@ -216,6 +216,13 @@ int main() {
   note that empty string == "" == {'\0'}
   thus the length of an empty string is 1 byte
   */
+
+  
+  // create array of strings
+  char strs[NUMBER_OF_STRINGS][STRING_LENGTH+1];
+  strcpy(strs[0], aString); // where aString is either an array or pointer to char
+  strcpy(strs[1], "foo");
+  
   
   int length = sizeof(s) / sizeof(char);
   /* compute s length */
