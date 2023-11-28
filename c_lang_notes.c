@@ -1,3 +1,23 @@
+// file io
+開啟檔案
+FILE *fp;
+fp = fopen(filename, option);
+/*
+r read from start of file (file must exist)
+w write from start of file
+a write from end of file
+r+ read and write from start of file (file must exist
+w+ read and write from start of file
+a+ read from start and write from end of file
+*/
+fclose(fp);
+
+int fgetc(fp) // get char one by one
+int fputc(c, fp) // write char one by one
+while( c = fgetc(fp) != EOF )
+
+
+
 // if use <math.h>, when compiling: gcc my_code.c -lm
 #include<stdio.h>
 #include<stdbool.h>
