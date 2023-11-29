@@ -1,23 +1,3 @@
-// file io
-開啟檔案
-FILE *fp;
-fp = fopen(filename, option);
-/*
-r read from start of file (file must exist)
-w write from start of file
-a write from end of file
-r+ read and write from start of file (file must exist
-w+ read and write from start of file
-a+ read from start and write from end of file
-*/
-fclose(fp);
-
-int fgetc(fp) // get char one by one
-int fputc(c, fp) // write char one by one
-while( c = fgetc(fp) != EOF )
-
-
-
 // if use <math.h>, when compiling: gcc my_code.c -lm
 #include<stdio.h>
 #include<stdbool.h>
@@ -312,6 +292,114 @@ int main() {
   Hello world, nice to meet you
   */
 
+  // file io
+  // open file
+  FILE *fp;
+  fp = fopen(filename, option);
+  /*
+  r:  read from start of file (file must exist)
+  w:  write from start of file
+  a:  write from end of file
+  r+: read and write from start of file (file must exist
+  w+: read and write from start of file
+  a+: read from start and write from end of file
+  rt: read in text mode
+  wt: write in text mode
+  rb: read in binary
+  wb: write in binary
+  */
+  fclose(fp);  // close file when no longer needed
+  
+  int fgetc(FILE *fp) // get char (returns char or EOF)
+  int fputc(int c, FILE *fp) // write char (returns char or EOF if didn't write successfully)
+  while( c = fgetc(fp) != EOF ){
+    process c;
+  }
+  
+  /*
+  stdin -> keyboard
+  stdout -> screen
+  stderr -> standard error (screen)
+  */
+
+  // write file1 into file2
+  fp1 = fopen("file1", "r");
+  fp2 = fopen("file2", "w");
+  while ((c = fgetc(fp1)) != EOF){
+    fputc(c, fp2);
+  }
+  fclose(fp1);
+  fclose(fp2);
+
+  // append file1 into file2
+  fp1 = fopen("file1", "r");
+  fp2 = fopen("file2", "a");
+  while ((c = fgetc(fp1)) != EOF){
+    fputc(c, fp2);
+  }
+  fclose(fp1);
+  fclose(fp2);
+
+  // simplier versions when involving stdin/stdout
+  fputc(c, stdout) == putchar(c)
+  fgetc(stdin) == getchar()
+
+  // get whole string instead of one char (compared to fgetc)
+  char *fgets(char *string, int num, FILE *fp);
+  /*
+  reads until '\n' or EOF
+  will input '\n' and '\0' into the string
+  length of string (num) must include space for '\n' or '\0'
+  example below:
+  */
+  char string[STRINGLEN];
+  ...
+  while (fgets(string, STRINGLEN, fp) != NULL)
+    process string;
+
+  
+  int fputs(const char *string, FILE *fp);
+  // writes line-by-line
+
+
+  char *gets(char *string);
+  int puts(const char *string);
+  // fputs(string, stdout) == puts(string);
+  // puts will automatically insert new line, fputs won't
+  
+  int fprintf(FILE *fp, const char *format, ... );
+  int fscanf(FILE *fp, const char *format, ... );
+  // same as printf and scanf except they are now working on files, not stdin/stdout
+  // fprintf returns byte location or a negative number if fails
+  // fscanf returns the number of data read, or EOF if fails
+
+  int sprintf(char *str, const char *format, ... );
+  int sscanf(char *str, const char *format, ... );
+  // same as above except they work with strings
+  // often used to get information from filenames
+  // example below:
+  char filename[4096];
+  int year[2], month[2], day[2];
+  scanf("%d%d%d", &year[0], &month[0], &day[0]);
+  sprintf(filename, "file-%4d-%02d-%02d", year[0], month[0], day[0]);
+  printf("filename is %s\n", filename);
+  sscanf(filename, "file-%d-%d-%d", &year[1], &month[1], &day[1]);
+  printf("year %d month %d day %d\n", year[1], month[1], day[1]);
+  
+  int fread(void *buf, int size, int n, FILE *fp);
+  int fwrite(const void *buf, int size, int n, FILE *fp);
+  /*
+  fread 函式以二進制的方式由與 fp 連結的檔案讀入 n 筆資料，
+  每一筆資料的大小是 size 個位元組，這些資料由檔案讀入
+  buffer 緩衝區。
+  fwrite 函式正好相反。是以二進制的方式將 n 筆每筆資料大小為
+  size 個位元組的資料寫入與 fp 連結的檔案。
+  ex:
+  */
+  int a{ARRAYSIZE];
+  fwrite(a, sizeof(int), ARRAYSIZE, fp);
+
+  
   
   return 0;
 }
