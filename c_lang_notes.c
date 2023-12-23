@@ -131,6 +131,7 @@ int main() {
   printf("%lf", dbl);
   printf("%6.4f", flt);  // total 6 digits, 4 decimal digits => output 12.3456
   printf("%.3f", flt);  // prints 3 decimal digits => output 1.234
+  printf("%02x", num);  // prints 16進位 2 digits, adds 0 to the front if no enough digits
   
   int flt_to_int;
   flt_to_int = (int) flt;  // (int), (float), (double), etc can be used to change variable type
