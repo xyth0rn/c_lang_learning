@@ -369,6 +369,9 @@ int main() {
   
   int fprintf(FILE *fp, const char *format, ... );
   int fscanf(FILE *fp, const char *format, ... );
+  while( fscanf(fp, "%s %d", string, num) != EOF ){
+    ..
+  }
   // same as printf and scanf except they are now working on files, not stdin/stdout
   // fprintf returns byte location or a negative number if fails
   // fscanf returns the number of data read, or EOF if fails
@@ -399,9 +402,29 @@ int main() {
   int a{ARRAYSIZE];
   fwrite(a, sizeof(int), ARRAYSIZE, fp);
 
+  // structure
+  typedef struct student{
+    char* name;
+    int score;
+  } Student;
+
+  Student A;
+  A.score = 90;
+  strcpy(A->name, "Bob");  // strings can only be assigned using strcpy()
+  /*
+  A.score  is by value
+  A->score is by reference (aka pointer)
+  "->" is more convenient to use
+  */
+
+  // struct set up for binary tree
+  typedef struct treenode{
+    int data;
+    Treenode *left;
+    Treenode *right;
+  } Treenode;
   
   
-  return 0;
 }
 
 
