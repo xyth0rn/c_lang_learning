@@ -428,16 +428,28 @@ int main() {
     int score;
   } Student;
 
-  Student A;
-  A.score = 90;
-  strcpy(A->name, "Bob");  // strings can only be assigned using strcpy()
   /*
-  A.score  is by value
+  typedef struct student Student
+    -> this line also works to renaming "struct student" as "Student"
+  */
+        
+  Student A;
+  A.score = 90;  // alternatively, A->score = 90;
+  // !!important!! strings can only be assigned using strcpy()
+  strcpy(A->name, "Bob");
+  /*
+  A.score  is by value     (aka normal way)
   A->score is by reference (aka pointer)
-  "->" is more convenient to use
+  "->" is more convenient to use especially in tree
   */
 
-  // struct set up for binary tree
+  // struct setup for linked list
+  typedef struct linkList{
+    int data;
+    LinkList *next;
+  } LinkList;
+        
+  // struct setup for binary tree
   typedef struct treenode{
     int data;
     Treenode *left;
@@ -453,16 +465,18 @@ int main() {
 :set paste
 // finish using ctrl+shift+v
 :set no paste
-// set tab to 2
+// set tabsize to 2
 :set ts=2 sw=2
 // show number of lines
 :set nu
+// change colorscheme
+:color `press-tab-to-toggle-through`
 // yank n lines
 `type number` -> yy
 // paste
 p
 // delete line
-d
+dd
 // replace character
 r -> (new character)
 // repeat last action
@@ -470,15 +484,15 @@ r -> (new character)
 
 
 --- terminal commands ---
+// ingore $ sign in the beginning
 // EOF
-ctrl + D  (or "ctrl + Z" in windows terminal)
+$ ctrl + D  (or "ctrl + Z" in windows terminal)
 // remove file
-rm `file`
+$ rm `file`
 // create copy of file
-cp `og_file` `new_file`
-
-
-
+$ cp `og_file` `new_file`
+// make new directory
+$ mkdir `directory_name`
 
 
 // prime num list under 2000
